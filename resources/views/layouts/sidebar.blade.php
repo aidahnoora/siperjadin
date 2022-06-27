@@ -8,7 +8,7 @@
     <ul class="sidebar-menu">
         <li class="menu-header">Dashboard</li>
         <li class="active">
-            <a href="#" class="nav-link">
+            <a href="/home" class="nav-link">
                 <i class="fas fa-fire"></i><span>Dashboard</span>
             </a>
         </li>
@@ -18,12 +18,12 @@
                 <i class="fas fa-columns"></i> <span>Data Pendukung</span>
             </a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="#">Pegawai</a></li>
-                <li><a class="nav-link" href="#">Tujuan Perjalanan</a></li>
-                <li><a class="nav-link" href="#">Bendahara</a></li>
-                <li><a class="nav-link" href="#">Instansi</a></li>
-                <li><a class="nav-link" href="#">Anggaran</a></li>
-                <li><a class="nav-link" href="#">Dasar SPT</a></li>
+                <li><a class="nav-link" href="/pegawai">Pegawai</a></li>
+                <li><a class="nav-link" href="/tujuan_perjalanan">Tujuan Perjalanan</a></li>
+                <li><a class="nav-link" href="/bendahara">Bendahara</a></li>
+                <li><a class="nav-link" href="/instansi">Instansi</a></li>
+                <li><a class="nav-link" href="/anggaran">Anggaran</a></li>
+                <li><a class="nav-link" href="/dasar_spt">Dasar SPT</a></li>
             </ul>
         </li>
         <li>

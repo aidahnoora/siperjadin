@@ -54,14 +54,10 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            
-            @yield('breadcrumbs')
-            
+              @yield('breadcrumbs')
           </div>
-
-          @yield('content')
-
           <div class="section-body">
+            @yield('content')
           </div>
         </section>
       </div>
