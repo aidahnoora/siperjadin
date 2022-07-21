@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Bendahara;
+use App\Pegawai;
 
 class BendaharaController extends Controller
 {
@@ -61,7 +62,13 @@ class BendaharaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bendaharas = Bendahara::findorfail($id);
+        $pegawais = Pegawai::all();
+
+        return view('pages.bendahara.edit', [
+            'bendaharas' => $bendaharas,
+            'pegawais' => $pegawais
+        ]);
     }
 
     /**
@@ -73,7 +80,19 @@ class BendaharaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_pegawai' => 'required',
+        ]);
+
+        $post = Bendahara::findorfail($id);
+
+        $post_data = [
+            'id_pegawai' => $request->id_pegawai,
+        ];
+
+        $post->update($post_data);
+
+        return redirect('bendahara');
     }
 
     /**

@@ -1,15 +1,15 @@
 @extends('layouts.home')
 
-@section('title', 'Bendahara')
+@section('title', 'Pangkat')
 
 @section('css')
 
 @endsection
 
 @section('breadcrumbs')
-<h1>Bendahara</h1>
+<h1>Pangkat</h1>
 <div class="section-header-breadcrumb">
-	<div class="breadcrumb-item"><a href="#">Bendahara</a></div>
+	<div class="breadcrumb-item"><a href="#">Pangkat</a></div>
 	<div class="breadcrumb-item"><a href="#">Data</a></div>
 	<div class="breadcrumb-item active">Edit</div>
 </div>
@@ -20,25 +20,24 @@
     <div class="col-12 col-md-12 col-lg-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h4>Edit Data Pegawai</h4>
+                <h4>Edit Data Pangkat</h4>
                 <div class="card-header-action">
-                    <a href="/bendahara" class="btn btn-info">Kembali</a>
+                  <a href="/pangkat" class="btn btn-success">Kembali</a>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('bendahara/update', $bendaharas->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('pangkat/update', $pangkats->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Nama Bendahara</label>
-                                <select class="custom-select @error('id_pegawai') is-invalid @enderror" id="id_pegawai" name="id_pegawai">
-                                    <option selected disabled value="">--Pilih Bendahara--</option>
-                                    @foreach ($pegawais as $pegawai)
-                                    <option value="{{$pegawai->id}}" {{ $bendaharas->id_pegawai == $pegawai->id ? 'selected' : '' }}>{{ $pegawai->nama_pegawai }}</option>
-                                    @endforeach
-                                </select>
+                                <label>Nama Pangkat</label>
+                                <input type="text" name="nama_pangkat" class="form-control form-control-sm" value="{{ $pangkats->nama_pangkat }}" autofocus required>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Golongan/Ruang</label>
+                                <input type="text" name="golru" class="form-control form-control-sm" value="{{ $pangkats->golru }}" autofocus required>
                             </div>
                         </div>
                     </div>

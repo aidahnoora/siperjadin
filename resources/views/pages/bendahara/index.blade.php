@@ -24,17 +24,27 @@
             </div>
             @foreach($bendaharas as $item)
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
                             <label>Nama Bendahara</label>
-                            <input type="text" name="nama_bendahara" class="form-control form-control-sm" value="{{ $item->nama_bendahara }}" autofocus disabled>
+                            <input type="text" class="form-control form-control-sm" value="{{ $item->pegawai->nama_pegawai }}" autofocus disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Jabatan</label>
+                            <input type="text" class="form-control form-control-sm" value="{{ $item->pegawai->jabatan->nama_jabatan }}" autofocus disabled>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Jabatan</label>
-                            <input type="text" name="" class="form-control form-control-sm" value="" autofocus disabled>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>NIP</label>
+                            <input type="text" class="form-control form-control-sm" value="{{ $item->pegawai->nip }}" autofocus disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Pangkat</label>
+                            <input type="text" class="form-control form-control-sm" value="{{ $item->pegawai->pangkat->nama_pangkat }}, ({{ $item->pegawai->pangkat->golru }})" autofocus disabled>
                         </div>
                     </div>
                 </div>

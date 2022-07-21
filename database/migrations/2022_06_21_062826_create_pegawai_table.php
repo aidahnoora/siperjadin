@@ -15,11 +15,11 @@ class CreatePegawaiTable extends Migration
     {
         Schema::create('pegawai', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_jabatan');
-            $table->foreignId('id_instansi');
             $table->string('nama_pegawai', 100);
-            $table->string('nip', 100);
-            $table->string('pangkat', 100);
+            $table->string('nip', 100)->nullable();
+            $table->foreignId('id_jabatan');
+            $table->foreignId('id_pangkat')->nullable();
+            $table->foreignId('id_instansi');
             $table->timestamps();
         });
     }

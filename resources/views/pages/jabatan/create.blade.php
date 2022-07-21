@@ -7,7 +7,7 @@
 @endsection
 
 @section('breadcrumbs')
-<h1>Instansi</h1>
+<h1>Jabatan</h1>
 <div class="section-header-breadcrumb">
 	<div class="breadcrumb-item"><a href="#">Jabatan</a></div>
 	<div class="breadcrumb-item"><a href="#">Data</a></div>

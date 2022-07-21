@@ -12,12 +12,11 @@ class Pegawai extends Model
     protected $table = "pegawai";
     protected $primaryKey = "id";
     protected $fillable = [
+        'nama_pegawai',
+        'nip',
     	'id_jabatan',
         'id_pangkat',
         'id_instansi',
-        'nama_pegawai',
-        'nip',
-        'pangkat'
     ];
 
     public function jabatan()
@@ -33,5 +32,10 @@ class Pegawai extends Model
     public function instansi()
     {
         return $this->belongsTo(Instansi::class, 'id_instansi');
+    }
+
+    public function bendahara()
+    {
+        return $this->hasMany(Bendahara::class);
     }
 }

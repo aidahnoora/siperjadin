@@ -7,7 +7,7 @@
     </div>
     <ul class="sidebar-menu">
         <li class="active">
-            <a href="/home" class="nav-link">
+            <a href="/" class="nav-link">
                 <i class="fas fa-fire"></i><span>Dashboard</span>
             </a>
         </li>
@@ -16,6 +16,7 @@
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users"></i> <span>Pegawai</span></a>
             <ul class="dropdown-menu">
               <li><a class="nav-link" href="/jabatan">Data Jabatan</a></li>
+              <li><a class="nav-link" href="/pangkat">Data Pangkat</a></li>
               <li><a class="nav-link" href="/pegawai">Data Pegawai</a></li>
             </ul>
           </li>

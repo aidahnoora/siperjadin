@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
     return view('pages.dashboard');
 });
@@ -49,6 +45,13 @@ Route::post('/jabatan/simpan', 'JabatanController@store')->name('jabatan/simpan'
 Route::get('/jabatan/edit/{id}', 'JabatanController@edit')->name('jabatan/edit');
 Route::put('/jabatan/{id}', 'JabatanController@update')->name('jabatan/update');
 Route::get('/jabatan/delete/{id}', 'JabatanController@destroy')->name('jabatan/delete');
+
+Route::get('/pangkat', 'PangkatController@index')->name('pangkat');
+Route::get('/pangkat/tambah', 'PangkatController@create')->name('pangkat/tambah');
+Route::post('/pangkat/simpan', 'PangkatController@store')->name('pangkat/simpan');
+Route::get('/pangkat/edit/{id}', 'PangkatController@edit')->name('pangkat/edit');
+Route::put('/pangkat/{id}', 'PangkatController@update')->name('pangkat/update');
+Route::get('/pangkat/delete/{id}', 'PangkatController@destroy')->name('pangkat/delete');
 
 Route::get('/pegawai', 'PegawaiController@index')->name('pegawai');
 Route::get('/pegawai/tambah', 'PegawaiController@create')->name('pegawai/tambah');

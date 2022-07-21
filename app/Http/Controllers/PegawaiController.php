@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pegawai;
 use App\Jabatan;
+use App\Pangkat;
 use App\Instansi;
 
 class PegawaiController extends Controller
@@ -30,7 +31,15 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        return view('pages.pegawai.create');
+        $jabatans = Jabatan::all();
+        $pangkats = Pangkat::all();
+        $instansis = Instansi::all();
+
+        return view('pages.pegawai.create', [
+            'jabatans' => $jabatans,
+            'pangkats' => $pangkats,
+            'instansis' => $instansis
+        ]);
     }
 
     /**
@@ -41,7 +50,21 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_pegawai' => 'required',
+            'id_jabatan' => 'required',
+            'id_instansi' => 'required',
+        ]);
+
+        Pegawai::create([
+            'nama_pegawai' => $request->nama_pegawai,
+            'nip' => $request->nip,
+            'id_jabatan' => $request->id_jabatan,
+            'id_pangkat' => $request->id_pangkat,
+            'id_instansi' => $request->id_instansi,
+        ]);
+
+        return redirect('pegawai');
     }
 
     /**
@@ -63,7 +86,17 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pegawais = Pegawai::findorfail($id);
+        $jabatans = Jabatan::all();
+        $pangkats = Pangkat::all();
+        $instansis = Instansi::all();
+
+        return view('pages.pegawai.edit', [
+            'pegawais' => $pegawais,
+            'jabatans' => $jabatans,
+            'pangkats' => $pangkats,
+            'instansis' => $instansis
+        ]);
     }
 
     /**
@@ -75,7 +108,25 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_pegawai' => 'required',
+            'id_jabatan' => 'required',
+            'id_instansi' => 'required',
+        ]);
+
+        $post = Pegawai::findorfail($id);
+
+        $post_data = [
+            'nama_pegawai' => $request->nama_pegawai,
+            'nip' => $request->nip,
+            'id_jabatan' => $request->id_jabatan,
+            'id_pangkat' => $request->id_pangkat,
+            'id_instansi' => $request->id_instansi,
+        ];
+
+        $post->update($post_data);
+
+        return redirect('pegawai');
     }
 
     /**
@@ -86,6 +137,9 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pegawais = Pegawai::find($id);
+        $pegawais->delete();
+
+        return redirect('pegawai');
     }
 }

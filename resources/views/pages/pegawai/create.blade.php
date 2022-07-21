@@ -26,41 +26,42 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="">
+                <form action="{{ route('pegawai/simpan') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nama Pegawai</label>
-                                <input type="text" name="nama_pegawai" class="form-control form-control-sm">
+                                <input type="text" name="nama_pegawai" class="form-control form-control-sm" autofocus required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>NIP</label>
-                                <input type="text" name="" class="form-control form-control-sm">
+                                <input type="text" name="nip" class="form-control form-control-sm" autofocus>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Jabatan</label>
-                                <select class="custom-select" name="">
-                                    <option selected>--Pilih Jabatan--</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <label for="id_jabatan">Jabatan</label>
+                                <select class="custom-select @error('id_jabatan') is-invalid @enderror" id="id_jabatan" name="id_jabatan">
+                                    <option selected disabled value="">--Pilih Jabatan--</option>
+                                    @foreach ($jabatans as $jabatan)
+                                    <option value="{{$jabatan->id}}" {{old('id')== $jabatan->id ? 'selected' : ''}}>{{ $jabatan->nama_jabatan }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Instansi</label>
-                                <select class="custom-select" name="">
-                                    <option selected>--Pilih Instansi--</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <label for="id_pangkat">Pangkat</label>
+                                <select class="custom-select @error('id_pangkat') is-invalid @enderror" id="id_pangkat" name="id_pangkat">
+                                    <option selected disabled value="">--Pilih Pangkat--</option>
+                                    @foreach ($pangkats as $pangkat)
+                                    <option value="{{$pangkat->id}}" {{old('id')== $pangkat->id ? 'selected' : ''}}>{{ $pangkat->nama_pangkat }}, ({{ $pangkat->golru }})</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -68,23 +69,12 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Pangkat</label>
-                                <select class="custom-select" name="">
-                                    <option selected>--Pilih Pangkat--</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Pangkat</label>
-                                <select class="custom-select" name="">
-                                <option selected>--Pilih Pangkat--</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <label for="id_instansi">Instansi</label>
+                                <select class="custom-select @error('id_instansi') is-invalid @enderror" id="id_instansi" name="id_instansi">
+                                    <option selected disabled value="">--Pilih Instansi--</option>
+                                    @foreach ($instansis as $instansi)
+                                    <option value="{{$instansi->id}}" {{old('id')== $instansi->id ? 'selected' : ''}}>{{ $instansi->nama_instansi }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
