@@ -16,6 +16,7 @@ class CreateTableBendahara extends Migration
         Schema::create('bendahara', function (Blueprint $table) {
             $table->id();
             $table->string('nama_bendahara', 100);
+            $table->foreignId('id_pegawai');
             $table->timestamps();
         });
     }

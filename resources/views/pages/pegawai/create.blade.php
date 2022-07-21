@@ -18,63 +18,81 @@
 @section('content')
 <div class="row">
     <div class="col-12 col-md-12 col-lg-12">
-        <div class="card">
+        <div class="card card-primary">
             <div class="card-header">
                 <h4>Tambah Data Pegawai</h4>
+                <div class="card-header-action">
+                    <a href="/pegawai" class="btn btn-info">Kembali</a>
+                </div>
             </div>
             <div class="card-body">
-                {{-- <div class="alert alert-info">
-                  <b>Note!</b> Not all browsers support HTML5 type input.
-                </div> --}}
-                <div class="form-group">
-                    <label>Nama Pegawai</label>
-                    <input type="text" name="" class="form-control">
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Instansi</label>
-                            <select class="custom-select" name="">
-                                <option selected>--Pilih Instansi--</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                <form action="">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nama Pegawai</label>
+                                <input type="text" name="nama_pegawai" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>NIP</label>
+                                <input type="text" name="" class="form-control form-control-sm">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Jabatan</label>
-                            <select class="custom-select" name="">
-                                <option selected>--Pilih Jabatan--</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Jabatan</label>
+                                <select class="custom-select" name="">
+                                    <option selected>--Pilih Jabatan--</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Instansi</label>
+                                <select class="custom-select" name="">
+                                    <option selected>--Pilih Instansi--</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>NIP</label>
-                            <input type="text" name="" class="form-control">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Pangkat</label>
+                                <select class="custom-select" name="">
+                                    <option selected>--Pilih Pangkat--</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Pangkat</label>
+                                <select class="custom-select" name="">
+                                <option selected>--Pilih Pangkat--</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Pangkat</label>
-                            <select class="custom-select" name="">
-                            <option selected>--Pilih Pangkat--</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary" type="submit">Submit</button>
                     </div>
-                </div>
-            <div class="card-footer text-right">
-                <button class="btn btn-primary mr-1" type="submit">Tambah</button>
+                </form>
             </div>
         </div>
     </div>

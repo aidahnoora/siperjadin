@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Instansi;
+use App\Bendahara;
 
-class InstansiController extends Controller
+class BendaharaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class InstansiController extends Controller
      */
     public function index()
     {
-        $instansis = Instansi::all();
+        $bendaharas = Bendahara::all();
 
-        return view('pages.instansi.index', [
-            'instansis' => $instansis,
+        return view('pages.bendahara.index', [
+            'bendaharas' => $bendaharas,
         ]);
     }
 
@@ -28,7 +28,7 @@ class InstansiController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -61,11 +61,7 @@ class InstansiController extends Controller
      */
     public function edit($id)
     {
-        $instansis = Instansi::findorfail($id);
-
-        return view('pages.instansi.edit', [
-            'instansis' => $instansis
-        ]);
+        //
     }
 
     /**
@@ -77,33 +73,7 @@ class InstansiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'nama_instansi' => 'required',
-            'alamat' => 'required'
-        ]);
-
-        $post = Instansi::findorfail($id);
-
-        if ($request->has('logo')) {
-            $logo = $request->logo;
-            $new_logo = time().$logo->getClientOriginalName();
-            $logo->move('logo/', $new_logo);
-
-            $post_data = [
-                'nama_instansi' => $request->nama_instansi,
-                'alamat' => $request->alamat,
-                'logo' => 'logo/'.$new_logo,
-            ];
-        } else{
-            $post_data = [
-                'nama_instansi' => $request->nama_instansi,
-                'alamat' => $request->alamat,
-            ];
-        }
-
-        $post->update($post_data);
-
-        return redirect('instansi');
+        //
     }
 
     /**
@@ -114,9 +84,6 @@ class InstansiController extends Controller
      */
     public function destroy($id)
     {
-        $instansis = Instansi::find($id);
-        $instansis->delete();
-
-        return redirect('instansi');
+        //
     }
 }

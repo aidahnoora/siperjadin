@@ -6,34 +6,33 @@
         <a href="index.html">SP</a>
     </div>
     <ul class="sidebar-menu">
-        <li class="menu-header">Dashboard</li>
         <li class="active">
             <a href="/home" class="nav-link">
                 <i class="fas fa-fire"></i><span>Dashboard</span>
             </a>
         </li>
-        <li class="menu-header">Menu Utama</li>
+        <li class="menu-header">Data Pendukung</li>
         <li class="nav-item dropdown">
-            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
-                <i class="fas fa-columns"></i> <span>Data Pendukung</span>
-            </a>
+            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users"></i> <span>Pegawai</span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="/pegawai">Pegawai</a></li>
-                <li><a class="nav-link" href="/tujuan_perjalanan">Tujuan Perjalanan</a></li>
-                <li><a class="nav-link" href="/bendahara">Bendahara</a></li>
-                <li><a class="nav-link" href="/instansi">Instansi</a></li>
-                <li><a class="nav-link" href="/anggaran">Anggaran</a></li>
-                <li><a class="nav-link" href="/dasar_spt">Dasar SPT</a></li>
+              <li><a class="nav-link" href="/jabatan">Data Jabatan</a></li>
+              <li><a class="nav-link" href="/pegawai">Data Pegawai</a></li>
             </ul>
-        </li>
+          </li>
+        <li><a class="nav-link" href="/tujuan_perjalanan"><i class="fas fa-building"></i><span>Tujuan Perjalanan</span></a></li>
+        <li><a class="nav-link" href="/bendahara"><i class="fas fa-cash-register"></i><span>Bendahara</span></a></li>
+        <li><a class="nav-link" href="/instansi"><i class="fas fa-chalkboard"></i><span>Instansi</span></a></li>
+        {{-- <li><a class="nav-link" href="/anggaran"><i class="fas fa-clipboard-check"></i><span>Anggaran</span></a></li> --}}
+        <li><a class="nav-link" href="/dasar_spt"><i class="fas fa-calendar"></i><span>Dasar SPT</span></a></li>
+        <li class="menu-header">SPPD</li>
         <li>
-            <a class="nav-link" href="#">
-                <i class="far fa-square"></i> <span>Pengisian SPPD</span>
+            <a class="nav-link" href="/home">
+                <i class="far fa-folder-open"></i> <span>Pengisian SPPD</span>
             </a>
         </li>
         <li>
-            <a class="nav-link" href="#">
-                <i class="far fa-square"></i> <span>Laporan</span>
+            <a class="nav-link" href="/home">
+                <i class="far fa-clipboard"></i> <span>Laporan</span>
             </a>
         </li>
     </ul>

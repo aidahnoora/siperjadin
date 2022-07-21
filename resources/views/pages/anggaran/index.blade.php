@@ -7,7 +7,7 @@
 @endsection
 
 @section('breadcrumbs')
-<h1>Instansi</h1>
+<h1>Anggaran</h1>
 <div class="section-header-breadcrumb">
 	<div class="breadcrumb-item"><a href="#">Anggaran</a></div>
 	<div class="breadcrumb-item active"><a href="#">Data</a></div>
@@ -49,7 +49,6 @@
 @endsection
 
 @section('js')
-<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function(){

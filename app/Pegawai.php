@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Jabatan;
+use App\Instansi;
+use App\Pangkat;
 
 class Pegawai extends Model
 {
@@ -10,9 +13,25 @@ class Pegawai extends Model
     protected $primaryKey = "id";
     protected $fillable = [
     	'id_jabatan',
+        'id_pangkat',
         'id_instansi',
         'nama_pegawai',
         'nip',
         'pangkat'
     ];
+
+    public function jabatan()
+    {
+        return $this->belongsTo(Jabatan::class, 'id_jabatan');
+    }
+
+    public function pangkat()
+    {
+        return $this->belongsTo(Pangkat::class, 'id_pangkat');
+    }
+
+    public function instansi()
+    {
+        return $this->belongsTo(Instansi::class, 'id_instansi');
+    }
 }

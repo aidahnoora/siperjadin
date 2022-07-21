@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDasarSptTable extends Migration
+class CreatePangkatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDasarSptTable extends Migration
      */
     public function up()
     {
-        Schema::create('dasar_spt', function (Blueprint $table) {
+        Schema::create('pangkat', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_spt', 100);
-            $table->string('file', 500)->nullable();
+            $table->string('nama_pangkat', 100);
+            $table->string('golru', 100);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateDasarSptTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dasar_spt');
+        Schema::dropIfExists('pangkat');
     }
 }

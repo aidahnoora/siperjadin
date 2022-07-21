@@ -3,7 +3,7 @@
 @section('title', 'Instansi')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+
 @endsection
 
 @section('breadcrumbs')
@@ -18,42 +18,49 @@
 @section('content')
 <div class="row">
     <div class="col-12 col-md-12 col-lg-12">
-        <div class="card">
+        <div class="card card-primary">
             <div class="card-header">
                 <h4>Data Instansi</h4>
             </div>
-            <div class="card-body table-responsive">
-                <table id="instansi" class="table table-bordered">
-                    <caption>List of Instansi</caption>
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                    </tbody>
-                </table>
+            @foreach($instansis as $item)
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nama Instansi</label>
+                            <input type="text" name="nama_instansi" class="form-control form-control-sm" value="{{ $item->nama_instansi }}" autofocus disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Alamat</label>
+                            <input type="text" name="alamat" class="form-control form-control-sm" value="{{ $item->alamat }}" autofocus disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Logo Instansi</label>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="{{ asset($item->logo) }}" width="100" height="auto">
+                        </div>
+                        <div class="col-md-8">
+                            <input type="file" name="logo" class="form-control" autofocus disabled>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="card-footer text-right">
+                <a href="{{ route('instansi/edit', $item->id) }}" class="btn btn-warning">
+                    Edit Data
+                </a>
+            </div>
+            @endforeach
         </div>
     </div>
 </div>
 @endsection
 
 @section('js')
-<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('#instansi').DataTable();
-    });
-</script>
+
 @endsection

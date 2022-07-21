@@ -14,7 +14,11 @@ class DasarSptController extends Controller
      */
     public function index()
     {
-        return view('pages.dasar-spt.index');
+        $dasars = DasarSpt::all();
+
+        return view('pages.dasar-spt.index', [
+            'dasars' => $dasars
+        ]);
     }
 
     /**
@@ -35,7 +39,29 @@ class DasarSptController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama_spt' => 'required',
+            'file' => 'file|mimes:doc,pdf,docx,xlsx,xls|max:2000|nullable',
+        ]);
+
+        if ($request->has('file')) {
+            $file = $request->file('file');
+            $namafile = time()."_".$file->getClientOriginalName();
+
+            $tujuanupload = 'file_spt';
+            $file->move($tujuanupload, $namafile);
+
+            DasarSpt::create([
+                'nama_spt' => $request->nama_spt,
+                'file' => $namafile,
+            ]);
+        } else {
+            DasarSpt::create([
+                'nama_spt' => $request->nama_spt,
+            ]);
+        }
+
+        return redirect('dasar_spt');
     }
 
     /**
@@ -57,7 +83,11 @@ class DasarSptController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.dasar-spt.edit');
+        $dasars = DasarSpt::findorfail($id);
+
+        return view('pages.dasar-spt.edit', [
+            'dasars' => $dasars
+        ]);
     }
 
     /**
@@ -69,7 +99,33 @@ class DasarSptController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nama_spt' => 'required',
+            'file' => 'file|mimes:doc,pdf,docx,xlsx,xls|max:2000|nullable',
+        ]);
+
+        $post = DasarSpt::findorfail($id);
+
+        if ($request->has('file')) {
+            $file = $request->file('file');
+            $namafile = time()."_".$file->getClientOriginalName();
+
+            $tujuanupload = 'file_spt';
+            $file->move($tujuanupload, $namafile);
+
+            $post_data = [
+                'nama_spt' => $request->nama_spt,
+                'file' => $namafile,
+            ];
+        } else {
+            $post_data = [
+                'nama_spt' => $request->nama_spt,
+            ];
+        }
+
+        $post->update($post_data);
+
+        return redirect('dasar_spt');
     }
 
     /**
@@ -80,6 +136,9 @@ class DasarSptController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dasars = DasarSpt::find($id);
+        $dasars->delete();
+
+        return redirect('dasar_spt');
     }
 }

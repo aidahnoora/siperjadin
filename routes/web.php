@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('pages.dashboard');
 });
 
@@ -28,6 +28,10 @@ Route::get('/anggaran/edit/{id}', 'AnggaranController@edit')->name('anggaran/edi
 Route::put('/anggaran/{id}', 'AnggaranController@update')->name('anggaran/update');
 Route::get('/anggaran/delete/{id}', 'AnggaranController@destroy')->name('anggaran/delete');
 
+Route::get('/bendahara', 'BendaharaController@index')->name('bendahara');
+Route::get('/bendahara/edit/{id}', 'BendaharaController@edit')->name('bendahara/edit');
+Route::put('/bendahara/{id}', 'BendaharaController@update')->name('bendahara/update');
+
 Route::get('/dasar_spt', 'DasarSptController@index')->name('dasar_spt');
 Route::get('/dasar_spt/tambah', 'DasarSptController@create')->name('dasar_spt/tambah');
 Route::post('/dasar_spt/simpan', 'DasarSptController@store')->name('dasar_spt/simpan');
@@ -36,11 +40,8 @@ Route::put('/dasar_spt/{id}', 'DasarSptController@update')->name('dasar_spt/upda
 Route::get('/dasar_spt/delete/{id}', 'DasarSptController@destroy')->name('dasar_spt/delete');
 
 Route::get('/instansi', 'InstansiController@index')->name('instansi');
-Route::get('/instansi/tambah', 'InstansiController@create')->name('instansi/tambah');
-Route::post('/instansi/simpan', 'InstansiController@store')->name('instansi/simpan');
 Route::get('/instansi/edit/{id}', 'InstansiController@edit')->name('instansi/edit');
 Route::put('/instansi/{id}', 'InstansiController@update')->name('instansi/update');
-Route::get('/instansi/delete/{id}', 'InstansiController@destroy')->name('instansi/delete');
 
 Route::get('/jabatan', 'JabatanController@index')->name('jabatan');
 Route::get('/jabatan/tambah', 'JabatanController@create')->name('jabatan/tambah');

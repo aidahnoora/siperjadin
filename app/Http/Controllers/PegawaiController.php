@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pegawai;
+use App\Jabatan;
+use App\Instansi;
 
 class PegawaiController extends Controller
 {
@@ -14,7 +16,11 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        return view('pages.pegawai.index');
+        $pegawais = Pegawai::all();
+
+        return view('pages.pegawai.index', [
+            'pegawais' => $pegawais
+        ]);
     }
 
     /**

@@ -14,7 +14,11 @@ class JabatanController extends Controller
      */
     public function index()
     {
-        return view('pages.jabatan.index');
+        $jabatans = Jabatan::all();
+
+        return view('pages.jabatan.index', [
+            'jabatans' => $jabatans
+        ]);
     }
 
     /**
@@ -35,7 +39,15 @@ class JabatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_jabatan' => 'required'
+        ]);
+
+        Jabatan::create([
+            'nama_jabatan' => $request->nama_jabatan
+        ]);
+
+        return redirect('jabatan');
     }
 
     /**
@@ -57,7 +69,11 @@ class JabatanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jabatans = Jabatan::findorfail($id);
+
+        return view('pages.jabatan.edit', [
+            'jabatans' => $jabatans
+        ]);
     }
 
     /**
@@ -69,7 +85,19 @@ class JabatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nama_jabatan' => 'required',
+        ]);
+
+        $post = Jabatan::findorfail($id);
+
+        $post_data = [
+            'nama_jabatan' => $request->nama_jabatan
+        ];
+
+        $post->update($post_data);
+
+        return redirect('jabatan');
     }
 
     /**
@@ -80,6 +108,9 @@ class JabatanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jabatans = Jabatan::find($id);
+        $jabatans->delete();
+
+        return redirect('jabatan');
     }
 }

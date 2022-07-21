@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TujuanPerjalanan;
 
 class TujuanPerjalananController extends Controller
 {
@@ -13,7 +14,11 @@ class TujuanPerjalananController extends Controller
      */
     public function index()
     {
-        return view('pages.tujuan-perjalanan.index');
+        $tujuans = TujuanPerjalanan::all();
+
+        return view('pages.tujuan-perjalanan.index', [
+            'tujuans' => $tujuans
+        ]);
     }
 
     /**
@@ -34,7 +39,17 @@ class TujuanPerjalananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama_tujuan' => 'required',
+            'nama_pejabat' => 'required',
+        ]);
+
+        TujuanPerjalanan::create([
+            'nama_tujuan' => $request->nama_tujuan,
+            'nama_pejabat' => $request->nama_pejabat,
+        ]);
+
+        return redirect('tujuan_perjalanan');
     }
 
     /**
@@ -56,7 +71,11 @@ class TujuanPerjalananController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tujuans = TujuanPerjalanan::findorfail($id);
+
+        return view('pages.tujuan-perjalanan.edit', [
+            'tujuans' => $tujuans
+        ]);
     }
 
     /**
@@ -68,7 +87,21 @@ class TujuanPerjalananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nama_tujuan' => 'required',
+            'nama_pejabat' => 'required',
+        ]);
+
+        $post = TujuanPerjalanan::findorfail($id);
+
+        $post_data = [
+            'nama_tujuan' => $request->nama_tujuan,
+            'nama_pejabat' => $request->nama_pejabat,
+        ];
+
+        $post->update($post_data);
+
+        return redirect('tujuan_perjalanan');
     }
 
     /**
@@ -79,6 +112,9 @@ class TujuanPerjalananController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tujuans = TujuanPerjalanan::find($id);
+        $tujuans->delete();
+
+        return redirect('tujuan_perjalanan');
     }
 }

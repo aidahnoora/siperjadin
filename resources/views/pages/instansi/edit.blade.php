@@ -18,36 +18,46 @@
 @section('content')
 <div class="row">
     <div class="col-12 col-md-12 col-lg-12">
-        <div class="card">
+        <div class="card card-primary">
             <div class="card-header">
                 <h4>Edit Data Instansi</h4>
+                <div class="card-header-action">
+                  <a href="/instansi" class="btn btn-success">Kembali</a>
+                </div>
             </div>
             <div class="card-body">
-                {{-- <div class="alert alert-info">
-                  <b>Note!</b> Not all browsers support HTML5 type input.
-                </div> --}}
-                <div class="form-group">
-                    <label>Nama Instansi</label>
-                    <input type="text" class="form-control" value="">
-                </div>
-                <div class="form-group">
-                    <label>Alamat</label>
-                    <input type="text" class="form-control" value="">
-                </div>
-                <div class="form-group">
-                    <label>Logo Instansi</label>
+                <form action="{{ route('instansi/update', $instansis->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <div class="row">
-                        <div class="col-md-4">
-                            <img src="" width="100" height="auto">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nama Instansi</label>
+                                <input type="text" name="nama_instansi" class="form-control form-control-sm" value="{{ $instansis->nama_instansi }}" autofocus required>
+                            </div>
                         </div>
-                        <div class="col-md-8">
-                            <input type="file" class="form-control">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Alamat</label>
+                                <input type="text" name="alamat" class="form-control form-control-sm" value="{{ $instansis->alamat }}" autofocus required>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="card-footer text-right">
-                <button class="btn btn-primary mr-1" type="submit">Update</button>
+                    <div class="form-group">
+                        <label>Logo Instansi</label>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{ asset($instansis->logo) }}" width="100" height="auto">
+                            </div>
+                            <div class="col-md-8">
+                                <input type="file" name="logo" class="form-control" autofocus>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary" type="submit">Update</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

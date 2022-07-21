@@ -7,7 +7,7 @@
 @endsection
 
 @section('breadcrumbs')
-<h1>Instansi</h1>
+<h1>Jabatan</h1>
 <div class="section-header-breadcrumb">
 	<div class="breadcrumb-item"><a href="#">Jabatan</a></div>
 	<div class="breadcrumb-item active"><a href="#">Data</a></div>
@@ -18,28 +18,38 @@
 @section('content')
 <div class="row">
     <div class="col-12 col-md-12 col-lg-12">
-        <div class="card">
+        <div class="card card-primary">
             <div class="card-header">
                 <h4>Data Jabatan</h4>
+                <div class="card-header-action">
+                    <a href="/jabatan/tambah" class="btn btn-info">Tambah</a>
+                </div>
             </div>
             <div class="card-body table-responsive">
                 <table id="jabatan" class="table table-bordered">
                     <caption>List of Jabatan</caption>
                     <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Nama Jabatan</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
+                        @foreach ($jabatans as $item)
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}.</th>
+                            <td>{{ $item->nama_jabatan }}</td>
+                            <td class="text-center">
+                                <a href="{{ route('jabatan/edit', $item->id) }}" class="btn btn-icon btn-sm btn-warning">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a href="{{ route('jabatan/delete', $item->id) }}" class="btn btn-icon btn-sm btn-danger">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -49,7 +59,6 @@
 @endsection
 
 @section('js')
-<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function(){
