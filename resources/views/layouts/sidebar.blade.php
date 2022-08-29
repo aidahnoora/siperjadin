@@ -27,12 +27,17 @@
         <li><a class="nav-link" href="/dasar_spt"><i class="fas fa-calendar"></i><span>Dasar SPT</span></a></li>
         <li class="menu-header">SPPD</li>
         <li>
-            <a class="nav-link" href="/home">
-                <i class="far fa-folder-open"></i> <span>Pengisian SPPD</span>
+            <a class="nav-link" href="/sppd">
+                <i class="far fa-folder"></i> <span>Pengisian SPPD</span>
             </a>
         </li>
         <li>
-            <a class="nav-link" href="/home">
+            <a class="nav-link" href="/cari-sppd">
+                <i class="far fa-folder-open"></i> <span>Cari SPPD</span>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" href="/">
                 <i class="far fa-clipboard"></i> <span>Laporan</span>
             </a>
         </li>

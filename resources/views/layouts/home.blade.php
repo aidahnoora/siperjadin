@@ -15,6 +15,14 @@
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
 
+  <style type="text/css">
+    .divider {
+        width: 100%;
+        height: 1px;
+        background: #BBB;
+        margin: 1rem 0;
+    }
+  </style>
   <!-- Page Specific CSS File -->
   @yield('css')
 

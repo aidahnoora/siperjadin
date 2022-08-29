@@ -31,23 +31,29 @@
                     <thead>
                         <tr>
                             <th scope="col">No.</th>
+                            <th scope="col">Nama</th>
                             <th scope="col">NIP</th>
-                            <th scope="col">Nama Pegawai</th>
-                            <th scope="col">Jabatan</th>
                             <th scope="col">Pangkat</th>
-                            <th scope="col">Instansi</th>
+                            <th scope="col">Jabatan / Intansi</th>
+                            <th scope="col">UH</th>
+                            <th scope="col">UM</th>
+                            <th scope="col">UT</th>
+                            <th>Tingkat Biaya</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($pegawais as $item)
                         <tr>
-                            <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $item->nip }}</td>
+                            <th scope="row" style="text-align: center">{{ $loop->iteration }}</th>
                             <td>{{ $item->nama_pegawai }}</td>
-                            <td>{{ $item->jabatan->nama_jabatan }}</td>
-                            <td>{{ $item->pangkat->nama_pangkat }}</td>
-                            <td>{{ $item->instansi->nama_instansi }}</td>
+                            <td>{{ $item->nip }}</td>
+                            <td>{{ $item->pangkat->golru }}, ({{ $item->pangkat->nama_pangkat }})</td>
+                            <td>{{ $item->jabatan->nama_jabatan }} / {{ $item->instansi->nama_instansi }}</td>
+                            <td style="text-align: right">{{ $item->uh }}</td>
+                            <td style="text-align: right">{{ $item->um }}</td>
+                            <td style="text-align: right">{{ $item->ut }}</td>
+                            <td style="text-align: right">{{ $item->tingkat_biaya }}</td>
                             <td class="text-center">
                                 <a href="{{ route('pegawai/edit', $item->id) }}" class="btn btn-icon btn-sm btn-warning">
                                     <i class="far fa-edit"></i>

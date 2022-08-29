@@ -66,3 +66,12 @@ Route::post('/tujuan_perjalanan/simpan', 'TujuanPerjalananController@store')->na
 Route::get('/tujuan_perjalanan/edit/{id}', 'TujuanPerjalananController@edit')->name('tujuan_perjalanan/edit');
 Route::put('/tujuan_perjalanan/{id}', 'TujuanPerjalananController@update')->name('tujuan_perjalanan/update');
 Route::get('/tujuan_perjalanan/delete/{id}', 'TujuanPerjalananController@destroy')->name('tujuan_perjalanan/delete');
+
+//SPPD
+Route::get('/sppd', 'SppdController@create')->name('sppd');
+Route::post('/sppd/simpan', 'SppdController@store')->name('sppd/simpan');
+Route::get('/cari-sppd', 'SppdController@index')->name('cari-sppd');
+Route::get('/sppd/edit/{id}', 'SppdController@edit')->name('sppd/edit');
+Route::put('/sppd/{id}', 'SppdController@update')->name('sppd/update');
+Route::get('/sppd/delete/{id}', 'SppdController@delete')->name('sppd/delete');
+

@@ -28,23 +28,21 @@
             <div class="card-body">
                 <form action="{{ route('pegawai/simpan') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
                                 <label>Nama Pegawai</label>
                                 <input type="text" name="nama_pegawai" class="form-control form-control-sm" autofocus required>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="col-md-6">
                                 <label>NIP</label>
                                 <input type="text" name="nip" class="form-control form-control-sm" autofocus>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
                                 <label for="id_jabatan">Jabatan</label>
                                 <select class="custom-select @error('id_jabatan') is-invalid @enderror" id="id_jabatan" name="id_jabatan">
                                     <option selected disabled value="">--Pilih Jabatan--</option>
@@ -53,9 +51,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="col-md-6">
                                 <label for="id_pangkat">Pangkat</label>
                                 <select class="custom-select @error('id_pangkat') is-invalid @enderror" id="id_pangkat" name="id_pangkat">
                                     <option selected disabled value="">--Pilih Pangkat--</option>
@@ -66,16 +62,36 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="id_instansi">Instansi</label>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="id_instansi">Unit Organisasi</label>
                                 <select class="custom-select @error('id_instansi') is-invalid @enderror" id="id_instansi" name="id_instansi">
                                     <option selected disabled value="">--Pilih Instansi--</option>
                                     @foreach ($instansis as $instansi)
                                     <option value="{{$instansi->id}}" {{old('id')== $instansi->id ? 'selected' : ''}}>{{ $instansi->nama_instansi }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="uh">UH</label>
+                                <input type="text" name="uh" class="form-control form-control-sm" autofocus>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="um">UM</label>
+                                <input type="text" name="um" class="form-control form-control-sm" autofocus>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="ut">UT</label>
+                                <input type="text" name="ut" class="form-control form-control-sm" autofocus>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="tingkat_biaya">Tingkat Biaya</label>
+                                <input type="text" name="tingkat_biaya" class="form-control form-control-sm" autofocus>
                             </div>
                         </div>
                     </div>

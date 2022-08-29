@@ -14,6 +14,10 @@ class Pegawai extends Model
     protected $fillable = [
         'nama_pegawai',
         'nip',
+        'uh',
+        'um',
+        'ut',
+        'tingkat_biaya',
     	'id_jabatan',
         'id_pangkat',
         'id_instansi',
@@ -37,5 +41,10 @@ class Pegawai extends Model
     public function bendahara()
     {
         return $this->hasMany(Bendahara::class);
+    }
+
+    public function sppd()
+    {
+        return $this->hasMany(Sppd::class);
     }
 }

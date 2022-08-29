@@ -12,4 +12,9 @@ class TujuanPerjalanan extends Model
     	'nama_tujuan',
         'nama_pejabat',
     ];
+
+    public function sppd()
+    {
+        return $this->hasMany(Sppd::class);
+    }
 }

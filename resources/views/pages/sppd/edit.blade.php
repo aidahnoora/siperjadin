@@ -11,7 +11,7 @@
 <div class="section-header-breadcrumb">
 	<div class="breadcrumb-item"><a href="#">SPT</a></div>
 	<div class="breadcrumb-item"><a href="#">Data</a></div>
-	<div class="breadcrumb-item active">Tambah</div>
+	<div class="breadcrumb-item active">Edit</div>
 </div>
 @endsection
 
@@ -20,26 +20,27 @@
     <div class="col-12 col-md-12 col-lg-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h4>Tambah Data SPT</h4>
+                <h4>Edit Data SPT</h4>
                 <div class="card-header-action">
                     <a href="/cari-sppd" class="btn btn-info">Cari SPT</a>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('sppd/simpan') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('sppd/update', $sppds->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="col-12 col-md-12 col-lg-12">
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label>Nomor SPT</label>
-                                    <input type="text" name="no_spt" class="form-control form-control-sm" autofocus required>
+                                    <input type="text" name="no_spt" class="form-control form-control-sm" value="{{ $sppds->no_spt}}" autofocus required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Tanggal SPT</label>
-                                    <input type="date" name="tgl_spt" class="form-control form-control-sm" autofocus required>
+                                    <input type="date" name="tgl_spt" class="form-control form-control-sm" value="{{ $sppds->tgl_spt}}" autofocus required>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +52,7 @@
                                     <select class="custom-select @error('id_pegawai') is-invalid @enderror" id="id_pegawai" name="id_pegawai">
                                         <option selected disabled value="">--Pilih Pejabat--</option>
                                         @foreach ($pegawais as $pegawai)
-                                        <option value="{{ $pegawai->id }}" data-jabatan="{{ $pegawai->jabatan->nama_jabatan }}" {{old('id')== $pegawai->id ? 'selected' : ''}}>{{ $pegawai->nama_pegawai }}</option>
+                                        <option value="{{ $pegawai->id }}" data-jabatan="{{ $pegawai->jabatan->nama_jabatan }}" {{ $sppds->id_pegawai== $pegawai->id ? 'selected' : '' }}>{{ $pegawai->nama_pegawai }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -59,7 +60,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="id_jabatan">Jabatan</label>
-                                    <input type="text" id="input" class="form-control form-control-sm" autofocus readonly>
+                                    <input type="text" id="input" class="form-control form-control-sm" value="{{ $sppds->pegawai->jabatan->nama_jabatan }}" autofocus readonly>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +71,7 @@
                                     <select class="custom-select @error('id_tujuan') is-invalid @enderror" id="id_tujuan" name="id_tujuan">
                                         <option selected disabled value="">--Pilih Tujuan--</option>
                                         @foreach ($tujuans as $tujuan)
-                                        <option value="{{ $tujuan->id }}" {{old('id')== $tujuan->id ? 'selected' : ''}}>{{ $tujuan->nama_tujuan }}</option>
+                                        <option value="{{ $tujuan->id }}" {{ $sppds->id_tujuan== $tujuan->id ? 'selected' : '' }}>{{ $tujuan->nama_tujuan }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -78,7 +79,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="keperluan">Keperluan</label>
-                                    <textarea type="text" name="keperluan" class="form-control form-control-sm" autofocus required></textarea>
+                                    <textarea type="text" name="keperluan" class="form-control form-control-sm" autofocus required>{{ $sppds->keperluan }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -86,13 +87,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="tgl_berangkat">Tanggal Berangkat</label>
-                                    <input type="date" name="tgl_berangkat" class="form-control form-control-sm" autofocus required>
+                                    <input type="date" name="tgl_berangkat" class="form-control form-control-sm" value="{{ $sppds->tgl_berangkat }}" autofocus required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="tgl_kembali">Tanggal Kembali</label>
-                                    <input type="date" name="tgl_kembali" class="form-control form-control-sm" autofocus required>
+                                    <input type="date" name="tgl_kembali" class="form-control form-control-sm" value="{{ $sppds->tgl_kembali }}" autofocus required>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -129,7 +130,7 @@
                                     <select class="custom-select @error('id_pegawai') is-invalid @enderror" id="id_pegawai" name="id_pegawai">
                                         <option selected disabled value="">--Pilih Pejabat--</option>
                                         @foreach ($pegawais as $pegawai)
-                                        <option value="{{ $pegawai->id }}" {{old('id')== $pegawai->id ? 'selected' : ''}}>{{ $pegawai->nama_pegawai }}</option>
+                                        <option value="{{ $pegawai->id }}" {{ $sppds->id_pegawai== $pegawai->id ? 'selected' : ''}}>{{ $pegawai->nama_pegawai }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -140,7 +141,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="hadir">Hadir dalam Pertemuan</label>
-                                    <textarea type="text" name="hadir" class="form-control form-control-sm" autofocus></textarea>
+                                    <textarea type="text" name="hadir" class="form-control form-control-sm" autofocus>{{ $sppds->hadir }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +149,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="petunjuk">Petunjuk/Arahan yang Diberikan</label>
-                                    <textarea type="text" name="petunjuk" class="form-control form-control-sm" autofocus></textarea>
+                                    <textarea type="text" name="petunjuk" class="form-control form-control-sm" autofocus>{{ $sppds->petunjuk }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +157,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="temuan">Masalah/Temuan</label>
-                                    <textarea type="text" name="temuan" class="form-control form-control-sm" autofocus></textarea>
+                                    <textarea type="text" name="temuan" class="form-control form-control-sm" autofocus>{{ $sppds->temuan }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +165,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="saran">Saran Tindakan</label>
-                                    <textarea type="text" name="saran" class="form-control form-control-sm" autofocus></textarea>
+                                    <textarea type="text" name="saran" class="form-control form-control-sm" autofocus>{{ $sppds->saran }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +173,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="lain_lain">Lain-lain</label>
-                                    <textarea type="text" name="lain_lain" class="form-control form-control-sm" autofocus></textarea>
+                                    <textarea type="text" name="lain_lain" class="form-control form-control-sm" autofocus>{{ $sppds->lain_lain }}</textarea>
                                 </div>
                             </div>
                         </div>

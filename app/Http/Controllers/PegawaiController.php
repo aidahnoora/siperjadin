@@ -59,6 +59,10 @@ class PegawaiController extends Controller
         Pegawai::create([
             'nama_pegawai' => $request->nama_pegawai,
             'nip' => $request->nip,
+            'uh' => $request->uh,
+            'um' => $request->um,
+            'ut' => $request->ut,
+            'tingkat_biaya' => $request->tingkat_biaya,
             'id_jabatan' => $request->id_jabatan,
             'id_pangkat' => $request->id_pangkat,
             'id_instansi' => $request->id_instansi,
@@ -119,6 +123,10 @@ class PegawaiController extends Controller
         $post_data = [
             'nama_pegawai' => $request->nama_pegawai,
             'nip' => $request->nip,
+            'uh' => $request->uh,
+            'um' => $request->um,
+            'ut' => $request->ut,
+            'tingkat_biaya' => $request->tingkat_biaya,
             'id_jabatan' => $request->id_jabatan,
             'id_pangkat' => $request->id_pangkat,
             'id_instansi' => $request->id_instansi,

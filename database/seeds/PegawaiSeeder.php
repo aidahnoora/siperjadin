@@ -16,6 +16,10 @@ class PegawaiSeeder extends Seeder
             [
                 'nama_pegawai' => 'Azzah',
                 'nip' => '11111',
+                'uh' => '0',
+                'um' => '0',
+                'ut' => '0',
+                'tingkat_biaya' => '0',
                 'id_jabatan' => '1',
                 'id_pangkat' => '2',
                 'id_instansi' => '1'
