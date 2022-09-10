@@ -32,11 +32,11 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Nama Bendahara</label>
-                                <select class="custom-select @error('id_pegawai') is-invalid @enderror" id="id_pegawai" name="id_pegawai">
+                                <label for="pegawai_id">Nama Bendahara</label>
+                                <select class="form-control @error('pegawai_id') is-invalid @enderror" id="pegawai_id" name="pegawai_id">
                                     <option selected disabled value="">--Pilih Bendahara--</option>
                                     @foreach ($pegawais as $pegawai)
-                                    <option value="{{$pegawai->id}}" {{ $bendaharas->id_pegawai == $pegawai->id ? 'selected' : '' }}>{{ $pegawai->nama_pegawai }}</option>
+                                    <option value="{{$pegawai->id}}" {{ $bendaharas->pegawai_id == $pegawai->id ? 'selected' : '' }}>{{ $pegawai->nama_pegawai }}</option>
                                     @endforeach
                                 </select>
                             </div>

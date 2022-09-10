@@ -20,9 +20,9 @@ class PegawaiSeeder extends Seeder
                 'um' => '0',
                 'ut' => '0',
                 'tingkat_biaya' => '0',
-                'id_jabatan' => '1',
-                'id_pangkat' => '2',
-                'id_instansi' => '1'
+                'jabatan_id' => '1',
+                'pangkat_id' => '2',
+                'instansi_id' => '1'
             ],
         ]);
     }

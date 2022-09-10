@@ -18,24 +18,24 @@ class Pegawai extends Model
         'um',
         'ut',
         'tingkat_biaya',
-    	'id_jabatan',
-        'id_pangkat',
-        'id_instansi',
+    	'jabatan_id',
+        'pangkat_id',
+        'instansi_id',
     ];
 
     public function jabatan()
     {
-        return $this->belongsTo(Jabatan::class, 'id_jabatan');
+        return $this->belongsTo(Jabatan::class, 'jabatan_id');
     }
 
     public function pangkat()
     {
-        return $this->belongsTo(Pangkat::class, 'id_pangkat');
+        return $this->belongsTo(Pangkat::class, 'pangkat_id');
     }
 
     public function instansi()
     {
-        return $this->belongsTo(Instansi::class, 'id_instansi');
+        return $this->belongsTo(Instansi::class, 'instansi_id');
     }
 
     public function bendahara()
@@ -45,6 +45,6 @@ class Pegawai extends Model
 
     public function sppd()
     {
-        return $this->hasMany(Sppd::class);
+        return $this->belongsToMany(Sppd::class);
     }
 }

@@ -48,18 +48,18 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="id_pegawai">Nama</label>
-                                    <select class="custom-select @error('id_pegawai') is-invalid @enderror" id="id_pegawai" name="id_pegawai">
+                                    <label for="pegawai_id">Nama</label>
+                                    <select class="form-control @error('pegawai_id') is-invalid @enderror" id="pegawai_id" name="pegawai_id">
                                         <option selected disabled value="">--Pilih Pejabat--</option>
                                         @foreach ($pegawais as $pegawai)
-                                        <option value="{{ $pegawai->id }}" data-jabatan="{{ $pegawai->jabatan->nama_jabatan }}" {{ $sppds->id_pegawai== $pegawai->id ? 'selected' : '' }}>{{ $pegawai->nama_pegawai }}</option>
+                                        <option value="{{ $pegawai->id }}" data-jabatan="{{ $pegawai->jabatan->nama_jabatan }}" {{ $sppds->pegawai_id== $pegawai->id ? 'selected' : '' }}>{{ $pegawai->nama_pegawai }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="id_jabatan">Jabatan</label>
+                                    <label for="jabatan_id">Jabatan</label>
                                     <input type="text" id="input" class="form-control form-control-sm" value="{{ $sppds->pegawai->jabatan->nama_jabatan }}" autofocus readonly>
                                 </div>
                             </div>
@@ -67,11 +67,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="id_tujuan">Tujuan Perjalanan</label>
-                                    <select class="custom-select @error('id_tujuan') is-invalid @enderror" id="id_tujuan" name="id_tujuan">
+                                    <label for="tujuan_id">Tujuan Perjalanan</label>
+                                    <select class="form-control @error('tujuan_id') is-invalid @enderror" id="tujuan_id" name="tujuan_id">
                                         <option selected disabled value="">--Pilih Tujuan--</option>
                                         @foreach ($tujuans as $tujuan)
-                                        <option value="{{ $tujuan->id }}" {{ $sppds->id_tujuan== $tujuan->id ? 'selected' : '' }}>{{ $tujuan->nama_tujuan }}</option>
+                                        <option value="{{ $tujuan->id }}" {{ $sppds->tujuan_id== $tujuan->id ? 'selected' : '' }}>{{ $tujuan->nama_tujuan }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -100,11 +100,11 @@
                                 <div class="form-group">
                                     <label class="d-block">Kendaraan</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="kendaraan" id="dinas" value="dinas">
+                                        <input class="form-check-input" type="radio" name="kendaraan" id="dinas" value="dinas" {{ $sppds->kendaraan == 'dinas' ? 'checked' : ''}}>
                                         <label class="form-check-label" for="dinas"> Dinas</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="kendaraan" id="pribadi" value="pribadi">
+                                        <input class="form-check-input" type="radio" name="kendaraan" id="pribadi" value="pribadi" {{ $sppds->kendaraan == 'pribadi' ? 'checked' : ''}}>
                                         <label class="form-check-label" for="pribadi"> Pribadi</label>
                                     </div>
                                 </div>
@@ -113,11 +113,11 @@
                                 <div class="form-group">
                                     <label class="d-block">Lama Perjalanan</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="lama_perjalanan" id="kurang" value="kurang">
+                                        <input class="form-check-input" type="radio" name="lama_perjalanan" id="kurang" value="kurang" {{ $sppds->lama_perjalanan == 'kurang' ? 'checked' : ''}}>
                                         <label class="form-check-label" for="kurang"> Kurang dari 8 Jam</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="lama_perjalanan" id="lebih" value="lebih">
+                                        <input class="form-check-input" type="radio" name="lama_perjalanan" id="lebih" value="lebih" {{ $sppds->lama_perjalanan == 'lebih' ? 'checked' : ''}}>
                                         <label class="form-check-label" for="lebih"> Lebih dari 8 Jam</label>
                                     </div>
                                 </div>
@@ -126,11 +126,11 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <h6><label for="id_pegawai">Yang Melakukan Perjalanan Dinas</label></h6>
-                                    <select class="custom-select @error('id_pegawai') is-invalid @enderror" id="id_pegawai" name="id_pegawai">
+                                    <h6><label for="pegawai_id">Yang Melakukan Perjalanan Dinas</label></h6>
+                                    <select class="form-control @error('pegawai_id') is-invalid @enderror" id="pegawai_id" name="pegawai_id">
                                         <option selected disabled value="">--Pilih Pejabat--</option>
                                         @foreach ($pegawais as $pegawai)
-                                        <option value="{{ $pegawai->id }}" {{ $sppds->id_pegawai== $pegawai->id ? 'selected' : ''}}>{{ $pegawai->nama_pegawai }}</option>
+                                        <option value="{{ $pegawai->id }}" {{ $sppds->pegawai_id== $pegawai->id ? 'selected' : ''}}>{{ $pegawai->nama_pegawai }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -191,7 +191,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-    $('#id_pegawai').on('change', function() {
+    $('#pegawai_id').on('change', function() {
         const selected = $(this).find('option:selected');
         const jab = selected.data('jabatan');
 

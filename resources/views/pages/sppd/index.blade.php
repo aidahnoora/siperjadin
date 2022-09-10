@@ -25,8 +25,8 @@
                 <form method="GET">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="id_tujuan">Tujuan Perjalanan </label>
-                            <select name="id_tujuan" id="id_tujuan" class="form-control-sm">
+                            <label for="tujuan_id">Tujuan Perjalanan </label>
+                            <select name="tujuan_id" id="tujuan_id" class="form-control-sm">
                                 <option value="">Pilih Tujuan</option>
                                 @foreach ($tujuans as $tujuan)
                                     <option value="{{ $tujuan->id }}">{{ $tujuan->nama_tujuan }}</option>
@@ -51,7 +51,6 @@
                             <th scope="col">Nomor dan Tanggal SPT</th>
                             <th scope="col">Tujuan</th>
                             <th scope="col">Keperluan</th>
-                            <th scope="col">Pemberi Tugas</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -62,7 +61,6 @@
                             <td>{{ $item->no_spt }}, {{ $item->tgl_spt }}</td>
                             <td>{{ $item->tujuan->nama_tujuan }}</td>
                             <td>{{ $item->keperluan }}</td>
-                            <td>{{ $item->pegawai->nama_pegawai }}</td>
                             <td class="text-center">
                                 <a href="" class="btn btn-icon btn-sm btn-info">
                                     <i class="fas fa-print"></i>

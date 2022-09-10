@@ -52,8 +52,8 @@ class PegawaiController extends Controller
     {
         $request->validate([
             'nama_pegawai' => 'required',
-            'id_jabatan' => 'required',
-            'id_instansi' => 'required',
+            'jabatan_id' => 'required',
+            'instansi_id' => 'required',
         ]);
 
         Pegawai::create([
@@ -63,9 +63,9 @@ class PegawaiController extends Controller
             'um' => $request->um,
             'ut' => $request->ut,
             'tingkat_biaya' => $request->tingkat_biaya,
-            'id_jabatan' => $request->id_jabatan,
-            'id_pangkat' => $request->id_pangkat,
-            'id_instansi' => $request->id_instansi,
+            'jabatan_id' => $request->jabatan_id,
+            'pangkat_id' => $request->pangkat_id,
+            'instansi_id' => $request->instansi_id,
         ]);
 
         return redirect('pegawai');
@@ -114,8 +114,8 @@ class PegawaiController extends Controller
     {
         $request->validate([
             'nama_pegawai' => 'required',
-            'id_jabatan' => 'required',
-            'id_instansi' => 'required',
+            'jabatan_id' => 'required',
+            'instansi_id' => 'required',
         ]);
 
         $post = Pegawai::findorfail($id);
@@ -127,9 +127,9 @@ class PegawaiController extends Controller
             'um' => $request->um,
             'ut' => $request->ut,
             'tingkat_biaya' => $request->tingkat_biaya,
-            'id_jabatan' => $request->id_jabatan,
-            'id_pangkat' => $request->id_pangkat,
-            'id_instansi' => $request->id_instansi,
+            'jabatan_id' => $request->jabatan_id,
+            'pangkat_id' => $request->pangkat_id,
+            'instansi_id' => $request->instansi_id,
         ];
 
         $post->update($post_data);

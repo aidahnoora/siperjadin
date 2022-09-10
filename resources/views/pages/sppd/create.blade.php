@@ -47,8 +47,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="id_pegawai">Nama</label>
-                                    <select class="custom-select @error('id_pegawai') is-invalid @enderror" id="id_pegawai" name="id_pegawai">
+                                    <label for="pegawai_id">Nama</label>
+                                    <select class="form-control @error('pegawai_id') is-invalid @enderror" id="pegawai_id" name="pegawai_id[]">
                                         <option selected disabled value="">--Pilih Pejabat--</option>
                                         @foreach ($pegawais as $pegawai)
                                         <option value="{{ $pegawai->id }}" data-jabatan="{{ $pegawai->jabatan->nama_jabatan }}" {{old('id')== $pegawai->id ? 'selected' : ''}}>{{ $pegawai->nama_pegawai }}</option>
@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="id_jabatan">Jabatan</label>
+                                    <label for="jabatan_id">Jabatan</label>
                                     <input type="text" id="input" class="form-control form-control-sm" autofocus readonly>
                                 </div>
                             </div>
@@ -66,8 +66,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="id_tujuan">Tujuan Perjalanan</label>
-                                    <select class="custom-select @error('id_tujuan') is-invalid @enderror" id="id_tujuan" name="id_tujuan">
+                                    <label for="tujuan_id">Tujuan Perjalanan</label>
+                                    <select class="form-control @error('tujuan_id') is-invalid @enderror" id="tujuan_id" name="tujuan_id">
                                         <option selected disabled value="">--Pilih Tujuan--</option>
                                         @foreach ($tujuans as $tujuan)
                                         <option value="{{ $tujuan->id }}" {{old('id')== $tujuan->id ? 'selected' : ''}}>{{ $tujuan->nama_tujuan }}</option>
@@ -125,9 +125,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <h6><label for="id_pegawai">Yang Melakukan Perjalanan Dinas</label></h6>
-                                    <select class="custom-select @error('id_pegawai') is-invalid @enderror" id="id_pegawai" name="id_pegawai">
-                                        <option selected disabled value="">--Pilih Pejabat--</option>
+                                    <h6><label for="pegawai_id">Yang Melakukan Perjalanan Dinas</label></h6>
+                                    <select class="form-control select2 @error('pegawai_id') is-invalid @enderror" id="pegawai_id" name="pegawai_id[]" multiple="multiple">
                                         @foreach ($pegawais as $pegawai)
                                         <option value="{{ $pegawai->id }}" {{old('id')== $pegawai->id ? 'selected' : ''}}>{{ $pegawai->nama_pegawai }}</option>
                                         @endforeach
@@ -190,12 +189,12 @@
 @section('js')
 <script>
     $(document).ready(function() {
-    $('#id_pegawai').on('change', function() {
-        const selected = $(this).find('option:selected');
-        const jab = selected.data('jabatan');
+        $('#pegawai_id').on('change', function() {
+            const selected = $(this).find('option:selected');
+            const jab = selected.data('jabatan');
 
-        $("#input").val(jab);
+            $("#input").val(jab);
+        });
     });
-});
 </script>
 @endsection

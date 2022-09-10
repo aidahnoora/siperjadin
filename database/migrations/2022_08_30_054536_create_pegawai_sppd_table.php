@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableBendahara extends Migration
+class CreatePegawaiSppdTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateTableBendahara extends Migration
      */
     public function up()
     {
-        Schema::create('bendahara', function (Blueprint $table) {
+        Schema::create('pegawai_sppd', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pegawai_id');
+            $table->foreignId('sppd_id');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateTableBendahara extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bendahara');
+        Schema::dropIfExists('pegawai_sppd');
     }
 }

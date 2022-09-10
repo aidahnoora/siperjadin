@@ -6,6 +6,7 @@ use App\Pegawai;
 use App\TujuanPerjalanan;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class SppdController extends Controller
 {
@@ -19,10 +20,10 @@ class SppdController extends Controller
         $sppds = Sppd::query();
         $tujuans = TujuanPerjalanan::all();
 
-        if($request->id_tujuan) {
-            $id_tujuan = $request->id_tujuan;
-            $sppds->whereHas('tujuan', function ($query) use ($id_tujuan) {
-                $query->where('id_tujuan', $id_tujuan);
+        if($request->tujuan_id) {
+            $tujuan_id = $request->tujuan_id;
+            $sppds->whereHas('tujuan', function ($query) use ($tujuan_id) {
+                $query->where('tujuan_id', $tujuan_id);
                 }
             );
         }
@@ -62,13 +63,12 @@ class SppdController extends Controller
         $request->validate([
             'no_spt' => 'required',
             'tgl_spt' => 'required',
-            'id_tujuan' => 'required',
+            'tujuan_id' => 'required',
             'keperluan' => 'required',
             'tgl_berangkat' => 'required',
             'tgl_kembali' => 'required',
             'kendaraan' => 'required',
             'lama_perjalanan' => 'required',
-            'id_pegawai' => 'required',
             'hadir',
             'petunjuk',
             'temuan',
@@ -76,22 +76,23 @@ class SppdController extends Controller
             'lain_lain'
         ]);
 
-        Sppd::create([
+        $post = Sppd::create([
             'no_spt' => $request->no_spt,
             'tgl_spt' => $request->tgl_spt,
-            'id_tujuan' => $request->id_tujuan,
+            'tujuan_id' => $request->tujuan_id,
             'keperluan' => $request->keperluan,
             'tgl_berangkat' => $request->tgl_berangkat,
             'tgl_kembali' => $request->tgl_kembali,
             'kendaraan' => $request->kendaraan,
             'lama_perjalanan' => $request->lama_perjalanan,
-            'id_pegawai' => $request->id_pegawai,
             'hadir' => $request->hadir,
             'petunjuk' => $request->petunjuk,
             'temuan' => $request->temuan,
             'saran' => $request->saran,
             'lain_lain' => $request->lain_lain,
         ]);
+
+        $post->pegawai()->attach($request->pegawai_id);
 
         return redirect('sppd');
     }
@@ -135,7 +136,45 @@ class SppdController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'no_spt' => 'required',
+            'tgl_spt' => 'required',
+            'tujuan_id' => 'required',
+            'keperluan' => 'required',
+            'tgl_berangkat' => 'required',
+            'tgl_kembali' => 'required',
+            'kendaraan' => 'required',
+            'lama_perjalanan' => 'required',
+            'pegawai_id' => 'required',
+            'hadir',
+            'petunjuk',
+            'temuan',
+            'saran',
+            'lain_lain'
+        ]);
+
+        $post = Sppd::findorfail($id);
+
+        $post_data = [
+            'no_spt' => $request->no_spt,
+            'tgl_spt' => $request->tgl_spt,
+            'tujuan_id' => $request->tujuan_id,
+            'keperluan' => $request->keperluan,
+            'tgl_berangkat' => $request->tgl_berangkat,
+            'tgl_kembali' => $request->tgl_kembali,
+            'kendaraan' => $request->kendaraan,
+            'lama_perjalanan' => $request->lama_perjalanan,
+            'pegawai_id' => $request->pegawai_id,
+            'hadir' => $request->hadir,
+            'petunjuk' => $request->petunjuk,
+            'temuan' => $request->temuan,
+            'saran' => $request->saran,
+            'lain_lain' => $request->lain_lain,
+        ];
+
+        $post->update($post_data);
+
+        return redirect('cari-sppd');
     }
 
     /**

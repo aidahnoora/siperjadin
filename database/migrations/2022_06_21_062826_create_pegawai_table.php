@@ -21,9 +21,9 @@ class CreatePegawaiTable extends Migration
             $table->string('um', 100)->nullable();
             $table->string('ut', 100)->nullable();
             $table->string('tingkat_biaya', 100)->nullable();
-            $table->foreignId('id_jabatan');
-            $table->foreignId('id_pangkat')->nullable();
-            $table->foreignId('id_instansi');
+            $table->foreignId('jabatan_id');
+            $table->foreignId('pangkat_id')->nullable();
+            $table->foreignId('instansi_id');
             $table->timestamps();
         });
     }

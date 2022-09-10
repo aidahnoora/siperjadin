@@ -9,11 +9,11 @@ class Bendahara extends Model
     protected $table = "bendahara";
     protected $primaryKey = "id";
     protected $fillable = [
-        'id_pegawai'
+        'pegawai_id'
     ];
 
     public function pegawai()
     {
-        return $this->belongsTo(Pegawai::class, 'id_pegawai');
+        return $this->belongsTo(Pegawai::class, 'pegawai_id');
     }
 }

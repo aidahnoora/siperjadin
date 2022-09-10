@@ -13,13 +13,12 @@ class Sppd extends Model
     protected $fillable = [
         'no_spt',
         'tgl_spt',
-        'id_tujuan',
+        'tujuan_id',
         'keperluan',
         'tgl_berangkat',
     	'tgl_kembali',
         'kendaraan',
         'lama_perjalanan',
-        'id_pegawai',
         'hadir',
         'petunjuk',
         'temuan',
@@ -29,11 +28,11 @@ class Sppd extends Model
 
     public function tujuan()
     {
-        return $this->belongsTo(TujuanPerjalanan::class, 'id_tujuan');
+        return $this->belongsTo(TujuanPerjalanan::class, 'tujuan_id');
     }
 
     public function pegawai()
     {
-        return $this->belongsTo(Pegawai::class, 'id_pegawai');
+        return $this->belongsToMany(Pegawai::class);
     }
 }

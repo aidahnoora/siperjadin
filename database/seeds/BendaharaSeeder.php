@@ -14,7 +14,7 @@ class BendaharaSeeder extends Seeder
     {
         DB::table('bendahara')->insert([
             [
-                'id_pegawai' => '1'
+                'pegawai_id' => '1'
             ],
         ]);
     }

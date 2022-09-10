@@ -43,8 +43,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="id_jabatan">Jabatan</label>
-                                <select class="custom-select @error('id_jabatan') is-invalid @enderror" id="id_jabatan" name="id_jabatan">
+                                <label for="jabatan_id">Jabatan</label>
+                                <select class="form-control @error('jabatan_id') is-invalid @enderror" id="jabatan_id" name="jabatan_id">
                                     <option selected disabled value="">--Pilih Jabatan--</option>
                                     @foreach ($jabatans as $jabatan)
                                     <option value="{{$jabatan->id}}" {{old('id')== $jabatan->id ? 'selected' : ''}}>{{ $jabatan->nama_jabatan }}</option>
@@ -52,8 +52,8 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="id_pangkat">Pangkat</label>
-                                <select class="custom-select @error('id_pangkat') is-invalid @enderror" id="id_pangkat" name="id_pangkat">
+                                <label for="pangkat_id">Pangkat</label>
+                                <select class="form-control @error('pangkat_id') is-invalid @enderror" id="pangkat_id" name="pangkat_id">
                                     <option selected disabled value="">--Pilih Pangkat--</option>
                                     @foreach ($pangkats as $pangkat)
                                     <option value="{{$pangkat->id}}" {{old('id')== $pangkat->id ? 'selected' : ''}}>{{ $pangkat->nama_pangkat }}, ({{ $pangkat->golru }})</option>
@@ -65,8 +65,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="id_instansi">Unit Organisasi</label>
-                                <select class="custom-select @error('id_instansi') is-invalid @enderror" id="id_instansi" name="id_instansi">
+                                <label for="instansi_id">Unit Organisasi</label>
+                                <select class="form-control @error('instansi_id') is-invalid @enderror" id="instansi_id" name="instansi_id">
                                     <option selected disabled value="">--Pilih Instansi--</option>
                                     @foreach ($instansis as $instansi)
                                     <option value="{{$instansi->id}}" {{old('id')== $instansi->id ? 'selected' : ''}}>{{ $instansi->nama_instansi }}</option>

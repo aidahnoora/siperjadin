@@ -81,13 +81,13 @@ class BendaharaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'id_pegawai' => 'required',
+            'pegawai_id' => 'required',
         ]);
 
         $post = Bendahara::findorfail($id);
 
         $post_data = [
-            'id_pegawai' => $request->id_pegawai,
+            'pegawai_id' => $request->pegawai_id,
         ];
 
         $post->update($post_data);

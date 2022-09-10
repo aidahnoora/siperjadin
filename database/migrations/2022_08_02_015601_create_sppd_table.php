@@ -17,13 +17,12 @@ class CreateSppdTable extends Migration
             $table->id();
             $table->string('no_spt', 500);
             $table->date('tgl_spt');
-            $table->foreignId('id_tujuan');
+            $table->foreignId('tujuan_id');
             $table->text('keperluan');
             $table->date('tgl_berangkat');
             $table->date('tgl_kembali');
             $table->string('kendaraan');
             $table->string('lama_perjalanan');
-            $table->foreignId('id_pegawai');
             $table->text('hadir')->nullable();
             $table->text('petunjuk')->nullable();
             $table->text('temuan')->nullable();

@@ -15,13 +15,13 @@ class CreateDataPerjalananTable extends Migration
     {
         Schema::create('data_perjalanan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_pegawai');
-            $table->foreignId('id_jabatan');
-            $table->foreignId('id_instansi');
-            $table->foreignId('id_anggaran');
-            $table->foreignId('id_spt');
-            $table->foreignId('id_bendahara');
-            $table->foreignId('id_tujuan');
+            $table->foreignId('pegawai_id');
+            $table->foreignId('jabatan_id');
+            $table->foreignId('instansi_id');
+            $table->foreignId('anggaran_id');
+            $table->foreignId('spt_id');
+            $table->foreignId('bendahara_id');
+            $table->foreignId('tujuan_id');
             $table->string('no_spt', 100);
             $table->string('tanggal_spt', 100);
             $table->text('keperluan');
@@ -29,7 +29,7 @@ class CreateDataPerjalananTable extends Migration
             $table->string('tanggal_kembali', 100);
             $table->string('kendaraan', 100);
             $table->string('lama_perjalanan', 100);
-            $table->text('hadir_dlm_pertemuan');
+            $table->text('hadir');
             $table->text('petunjuk');
             $table->text('masalah');
             $table->text('saran');
