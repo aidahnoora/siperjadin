@@ -43,7 +43,7 @@ $("#modal-4").fireModal({
 });
 
 $("#modal-5").fireModal({
-  title: 'Login',
+  title: 'Lihat Data',
   body: $("#modal-login-part"),
   footerClass: 'bg-whitesmoke',
   autoFocus: false,
@@ -65,15 +65,15 @@ $("#modal-5").fireModal({
   shown: function(modal, form) {
     console.log(form)
   },
-  buttons: [
-    {
-      text: 'Login',
-      submit: true,
-      class: 'btn btn-primary btn-shadow',
-      handler: function(modal) {
-      }
-    }
-  ]
+//   buttons: [
+//     {
+//       text: 'Tutup',
+//       submit: false,
+//       class: 'btn btn-primary btn-shadow',
+//       handler: function(modal) {
+//       }
+//     }
+//   ]
 });
 
 $("#modal-6").fireModal({

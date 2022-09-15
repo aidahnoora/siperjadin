@@ -99,11 +99,11 @@
                                 <div class="form-group">
                                     <label class="d-block">Kendaraan</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="kendaraan" id="dinas" value="dinas">
+                                        <input class="form-check-input" type="radio" name="kendaraan" id="dinas" value="Dinas">
                                         <label class="form-check-label" for="dinas"> Dinas</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="kendaraan" id="pribadi" value="pribadi">
+                                        <input class="form-check-input" type="radio" name="kendaraan" id="pribadi" value="Pribadi">
                                         <label class="form-check-label" for="pribadi"> Pribadi</label>
                                     </div>
                                 </div>
@@ -112,11 +112,11 @@
                                 <div class="form-group">
                                     <label class="d-block">Lama Perjalanan</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="lama_perjalanan" id="kurang" value="kurang">
+                                        <input class="form-check-input" type="radio" name="lama_perjalanan" id="kurang" value="Kurang dari 8 Jam">
                                         <label class="form-check-label" for="kurang"> Kurang dari 8 Jam</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="lama_perjalanan" id="lebih" value="lebih">
+                                        <input class="form-check-input" type="radio" name="lama_perjalanan" id="lebih" value="Lebih dari 8 Jam">
                                         <label class="form-check-label" for="lebih"> Lebih dari 8 Jam</label>
                                     </div>
                                 </div>

@@ -49,18 +49,21 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="pegawai_id">Nama</label>
-                                    <select class="form-control @error('pegawai_id') is-invalid @enderror" id="pegawai_id" name="pegawai_id">
+                                    <select class="form-control @error('pegawai_id') is-invalid @enderror" id="pegawai_id[]" name="pegawai_id[]">
                                         <option selected disabled value="">--Pilih Pejabat--</option>
-                                        @foreach ($pegawais as $pegawai)
-                                        <option value="{{ $pegawai->id }}" data-jabatan="{{ $pegawai->jabatan->nama_jabatan }}" {{ $sppds->pegawai_id== $pegawai->id ? 'selected' : '' }}>{{ $pegawai->nama_pegawai }}</option>
+                                        @foreach ($perintahs as $perintah)
+                                        <option value="{{ $perintah->id }}"
+                                            @foreach ($sppds->pegawai as $value)
+                                                @if ($perintah->id == $value->id)
+                                                    @if ($loop->first)
+                                                    selected
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                            >{{ $perintah->nama_pegawai }}
+                                        </option>
                                         @endforeach
                                     </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="jabatan_id">Jabatan</label>
-                                    <input type="text" id="input" class="form-control form-control-sm" value="{{ $sppds->pegawai->jabatan->nama_jabatan }}" autofocus readonly>
                                 </div>
                             </div>
                         </div>
@@ -100,11 +103,11 @@
                                 <div class="form-group">
                                     <label class="d-block">Kendaraan</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="kendaraan" id="dinas" value="dinas" {{ $sppds->kendaraan == 'dinas' ? 'checked' : ''}}>
+                                        <input class="form-check-input" type="radio" name="kendaraan" id="dinas" value="Dinas" {{ $sppds->kendaraan == 'Dinas' ? 'checked' : ''}}>
                                         <label class="form-check-label" for="dinas"> Dinas</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="kendaraan" id="pribadi" value="pribadi" {{ $sppds->kendaraan == 'pribadi' ? 'checked' : ''}}>
+                                        <input class="form-check-input" type="radio" name="kendaraan" id="pribadi" value="Pribadi" {{ $sppds->kendaraan == 'Pribadi' ? 'checked' : ''}}>
                                         <label class="form-check-label" for="pribadi"> Pribadi</label>
                                     </div>
                                 </div>
@@ -113,11 +116,11 @@
                                 <div class="form-group">
                                     <label class="d-block">Lama Perjalanan</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="lama_perjalanan" id="kurang" value="kurang" {{ $sppds->lama_perjalanan == 'kurang' ? 'checked' : ''}}>
+                                        <input class="form-check-input" type="radio" name="lama_perjalanan" id="kurang" value="Kurang dari 8 Jam" {{ $sppds->lama_perjalanan == 'Kurang dari 8 Jam' ? 'checked' : ''}}>
                                         <label class="form-check-label" for="kurang"> Kurang dari 8 Jam</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="lama_perjalanan" id="lebih" value="lebih" {{ $sppds->lama_perjalanan == 'lebih' ? 'checked' : ''}}>
+                                        <input class="form-check-input" type="radio" name="lama_perjalanan" id="lebih" value="Lebih dari 8 Jam" {{ $sppds->lama_perjalanan == 'Lebih dari 8 Jam' ? 'checked' : ''}}>
                                         <label class="form-check-label" for="lebih"> Lebih dari 8 Jam</label>
                                     </div>
                                 </div>
@@ -127,10 +130,17 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <h6><label for="pegawai_id">Yang Melakukan Perjalanan Dinas</label></h6>
-                                    <select class="form-control @error('pegawai_id') is-invalid @enderror" id="pegawai_id" name="pegawai_id">
-                                        <option selected disabled value="">--Pilih Pejabat--</option>
+                                    <select class="form-control select2 @error('pegawai_id') is-invalid @enderror" id="pegawai_id" name="pegawai_id[]" multiple="multiple">
                                         @foreach ($pegawais as $pegawai)
-                                        <option value="{{ $pegawai->id }}" {{ $sppds->pegawai_id== $pegawai->id ? 'selected' : ''}}>{{ $pegawai->nama_pegawai }}</option>
+                                        <option value="{{ $pegawai->id }}"
+                                            @foreach ($sppds->pegawai as $value)
+                                                @if ($pegawai->id == $value->id)
+                                                    @if ($loop->first) @continue @endif
+                                                    selected
+                                                @endif
+                                            @endforeach
+                                            >{{ $pegawai->nama_pegawai }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -984,6 +984,10 @@ table tr:hover .table-links {
   border-top: none;
   border-radius: 0 0 3px 3px; }
 
+.modal-backdrop {
+    position: relative;
+}
+
 .modal-content {
   max-width: 100%;
   border: none;
@@ -2086,8 +2090,8 @@ blockquote {
   blockquote .blockquote-footer {
     margin-top: 10px; }
 
-.bg-whitesmoke {
-  background-color: #f7f9f9 !important; }
+/* .bg-whitesmoke {
+  background-color: #f7f9f9 !important; } */
 
 .ion {
   font-size: 15px; }

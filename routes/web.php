@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::view('/', function () {
     return view('pages.dashboard');
 });
 
@@ -71,6 +71,7 @@ Route::get('/tujuan_perjalanan/delete/{id}', 'TujuanPerjalananController@destroy
 Route::get('/sppd', 'SppdController@create')->name('sppd');
 Route::post('/sppd/simpan', 'SppdController@store')->name('sppd/simpan');
 Route::get('/cari-sppd', 'SppdController@index')->name('cari-sppd');
+Route::get('/cari-sppd/{id}', 'SppdController@show');
 Route::get('/sppd/edit/{id}', 'SppdController@edit')->name('sppd/edit');
 Route::put('/sppd/{id}', 'SppdController@update')->name('sppd/update');
 Route::get('/sppd/delete/{id}', 'SppdController@delete')->name('sppd/delete');

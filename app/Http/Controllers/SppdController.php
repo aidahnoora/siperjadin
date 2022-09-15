@@ -105,7 +105,15 @@ class SppdController extends Controller
      */
     public function show($id)
     {
-        //
+        $sppds = Sppd::findorfail($id);
+        $pegawais = Pegawai::all();
+        $tujuans = TujuanPerjalanan::all();
+
+        return view('pages.sppd.index', [
+            'sppds' => $sppds,
+            'pegawais' => $pegawais,
+            'tujuans' => $tujuans,
+        ]);
     }
 
     /**
@@ -117,11 +125,13 @@ class SppdController extends Controller
     public function edit($id)
     {
         $sppds = Sppd::findorfail($id);
+        $perintahs = Pegawai::all();
         $pegawais = Pegawai::all();
         $tujuans = TujuanPerjalanan::all();
 
         return view('pages.sppd.edit', [
             'sppds' => $sppds,
+            'perintahs' => $perintahs,
             'pegawais' => $pegawais,
             'tujuans' => $tujuans,
         ]);
